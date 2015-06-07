@@ -1,6 +1,8 @@
 ### Weather Forecast Processor
-This application has to demonstrate Java EE 7 capabilities - WebSockets, JMS and EJB being used together. 
-Weather Forecast Processor is a sample app the 
+This application has to demonstrate such Java EE 7 facilities as WebSockets, JMS and EJB being used together. 
+JMS role is to participate in message generating, sending and receiving.
+EJB handles message consumption (MDB) and makes the entire process periodic (task scheduling).
+WebSockets take care of concurrent client-side live updates - all the clients obtain the updates simultaneously.        
 
 ### Technology Stack
 * JDK 8
@@ -22,8 +24,8 @@ Once the app is assembled, deploy weather-forecast-processor.war to WildFly serv
 
 The app is build around two schedulers:
 
-`a. WeatherWebSocket class - websocket endpoint and its client ws pair which is initialized inside index.jsp;`
+`a. WeatherWebSocket class - websocket endpoint and its client ws pair which is initialized inside js script delivered by index.jsp;`
 
-`b. ForecastProducer (sends JMS messages) and ForecastConsumer (MDB that consumes them) classes.`
+`b. ForecastProducer (sends JMS messages periodically) and ForecastConsumer (MDB that consumes them) classes.`
 
-Access the app in several different browser windows and just watch them out - you should get the latest weather forecast displayed in all your clients at once.
+Access the app in several different browser windows and just watch them out - you should be receiving the latest weather forecast updates in all your clients at once.
